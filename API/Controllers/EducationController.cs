@@ -1,28 +1,39 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Application.Schools;
 using Domain;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Persistence;
 
 namespace API.Controllers
 {
     public class EducationController : BaseApiController
     {
-        private readonly DataContext _context;
-        public EducationController(DataContext context)
-        {
-            _context = context;
-        }
 
         [HttpGet]
         public async Task<ActionResult<List<Education>>> GetDegrees()
         {
+            return await Mediator.Send(new List.Query());
+        }
 
-            var data = await _context.Schools.ToListAsync();
+        [HttpPost]
+        public async Task<IActionResult> AddDegrees(Education education)
+        {
 
-            return data;
+            return Ok(await Mediator.Send(new Create.Command { Education = education }));
 
+        }
+        [HttpPut("{id}")]
+        public async Task<IActionResult> EditDegree(Guid id, Education education)
+        {
+            education.Id = id;
+
+            return Ok(await Mediator.Send(new Edit.Commnad { Education = education }));
+        }
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteEducation(Guid id)
+        {
+            return Ok(await Mediator.Send(new Delete.Command { Id = id }));
         }
 
 

@@ -1,6 +1,6 @@
 namespace Domain
 {
-    public class Profile
+    public class MyProfile
     {
         public int Id { get; set; }
         public string Name { get; set; }
