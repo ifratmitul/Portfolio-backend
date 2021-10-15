@@ -11,16 +11,16 @@ namespace API.Controllers
     {
 
         [HttpGet]
-        public async Task<ActionResult<List<Education>>> GetDegrees()
+        public async Task<IActionResult> GetDegrees()
         {
-            return await Mediator.Send(new List.Query());
+            return HandleResult(await Mediator.Send(new List.Query()));
         }
 
         [HttpPost]
         public async Task<IActionResult> AddDegrees(Education education)
         {
 
-            return Ok(await Mediator.Send(new Create.Command { Education = education }));
+            return HandleResult(await Mediator.Send(new Create.Command { Education = education }));
 
         }
         [HttpPut("{id}")]
@@ -28,12 +28,12 @@ namespace API.Controllers
         {
             education.Id = id;
 
-            return Ok(await Mediator.Send(new Edit.Commnad { Education = education }));
+            return HandleResult(await Mediator.Send(new Edit.Commnad { Education = education }));
         }
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteEducation(Guid id)
         {
-            return Ok(await Mediator.Send(new Delete.Command { Id = id }));
+            return HandleResult(await Mediator.Send(new Delete.Command { Id = id }));
         }
 
 
