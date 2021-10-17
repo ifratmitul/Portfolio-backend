@@ -8,6 +8,7 @@ namespace Application.Core
         public MappingProfiles()
         {
             CreateMap<Education, Education>();
+            CreateMap<Certificate, Certificate>();
         }
     }
 }
