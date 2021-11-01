@@ -28,7 +28,7 @@ namespace Application.Certificates
 
             public async Task<Result<Unit>> Handle(Command request, CancellationToken cancellationToken)
             {
-                var data = _context.Certificates.FindAsync(request.Certificate.Id);
+                var data = await _context.Certificates.FindAsync(request.Certificate.Id);
                 if (data == null) return null;
                 _mapper.Map(request.Certificate, data);
 
