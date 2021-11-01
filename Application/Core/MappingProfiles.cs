@@ -1,4 +1,5 @@
 using Application.Experiences;
+using Application.PersonalInfo;
 using Application.Skills;
 using AutoMapper;
 using Domain;
@@ -13,13 +14,14 @@ namespace Application.Core
             CreateMap<Certificate, Certificate>();
             CreateMap<Skill, Skill>();
             CreateMap<Skill, SkillDto>()
-            .ForMember(dto => dto.Id, source => source.MapFrom(m => m.Id))
-            .ForMember(dto => dto.SkillName, source => source.MapFrom(m => m.SkillName))
             .ForMember(dto => dto.PhotoUrl, source => source.MapFrom(m => m.Photo.Url));
-
             CreateMap<Experience, Experience>();
             CreateMap<Experience, ExperienceDto>()
                 .ForMember(dto => dto.PhotoUrl, source => source.MapFrom(m => m.Logo.Url));
+            CreateMap<MyProfile, MyProfile>();
+            CreateMap<MyProfile, ProfileDto>()
+            .ForMember(dto => dto.PhotoUrl, source => source.MapFrom(m => m.Photo.Url));
+
         }
     }
 }
