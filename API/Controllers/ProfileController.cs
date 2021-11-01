@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using Application.PersonalInfo;
 using Domain;
@@ -19,9 +20,10 @@ namespace API.Controllers
             return HandleResult(await Mediator.Send(new Create.Command { Profile = p }));
         }
 
-        [HttpPut]
-        public async Task<IActionResult> EditExperience([FromForm] MyProfile p)
+        [HttpPut("{id}")]
+        public async Task<IActionResult> EditExperience(Guid id, [FromForm] MyProfile p)
         {
+            p.Id = id;
             return HandleResult(await Mediator.Send(new Edit.Commnad { Profile = p }));
         }
 
