@@ -21,7 +21,7 @@ namespace API.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> EditExperience(Guid id, Experience exp)
+        public async Task<IActionResult> EditExperience(Guid id, [FromForm] Experience exp)
         {
             exp.Id = id;
 

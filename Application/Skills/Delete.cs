@@ -32,7 +32,7 @@ namespace Application.Skills
             {
                 var skill = await _context.Skills.Include(p => p.Photo).Where(skill => skill.Id == request.Id).FirstOrDefaultAsync<Skill>();
                 if (skill == null) return null;
-                var photo = _photoAccessor.DeletePhoto(skill.Photo.Id);
+                var photo = await _photoAccessor.DeletePhoto(skill.Photo.Id);
                 if (photo == null) return Result<Unit>.Failure("Failed to delete photo");
 
                 _context.Remove(skill);

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
@@ -29,10 +30,10 @@ namespace Application.Experiences
 
             public async Task<Result<List<ExperienceDto>>> Handle(Query request, CancellationToken cancellationToken)
             {
-                var skills = await _context.Experiences.ProjectTo<ExperienceDto>(_mapper.ConfigurationProvider)
+                var exp = await _context.Experiences.ProjectTo<ExperienceDto>(_mapper.ConfigurationProvider)
                 .ToListAsync(cancellationToken);
 
-                return Result<List<ExperienceDto>>.Success(skills);
+                return Result<List<ExperienceDto>>.Success(exp);
             }
 
         }
