@@ -1,5 +1,6 @@
 using Application.Experiences;
 using Application.PersonalInfo;
+using Application.Projects;
 using Application.Skills;
 using AutoMapper;
 using Domain;
@@ -21,6 +22,14 @@ namespace Application.Core
             CreateMap<MyProfile, MyProfile>();
             CreateMap<MyProfile, ProfileDto>()
             .ForMember(dto => dto.PhotoUrl, source => source.MapFrom(m => m.Photo.Url));
+
+            CreateMap<ProjectSkill, ProjectSkillDto>()
+             .ForMember(dto => dto.SkillName, s => s.MapFrom(m => m.SKill.SkillName))
+             .ForMember(dto => dto.PhotoUrl, s => s.MapFrom(m => m.SKill.Photo.Url));
+
+            CreateMap<Project, ProjectDto>()
+            .ForMember(dto => dto.Photos, s => s.MapFrom(m => m.Photos))
+            .ForMember(dto => dto.Skills, s => s.MapFrom(m => m.Skills));
 
         }
     }

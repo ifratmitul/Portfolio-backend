@@ -15,7 +15,7 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddExperience([FromForm] MyProfile p)
+        public async Task<IActionResult> AddProfileDetails([FromForm] MyProfile p)
         {
             return HandleResult(await Mediator.Send(new Create.Command { Profile = p }));
         }
