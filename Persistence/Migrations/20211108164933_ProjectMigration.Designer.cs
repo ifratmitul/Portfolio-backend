@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Persistence;
@@ -9,9 +10,10 @@ using Persistence;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20211108164933_ProjectMigration")]
+    partial class ProjectMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -232,21 +234,6 @@ namespace Persistence.Migrations
                     b.ToTable("Projects");
                 });
 
-            modelBuilder.Entity("Domain.ProjectSkill", b =>
-                {
-                    b.Property<Guid>("SkillId")
-                        .HasColumnType("uuid");
-
-                    b.Property<Guid>("ProjectId")
-                        .HasColumnType("uuid");
-
-                    b.HasKey("SkillId", "ProjectId");
-
-                    b.HasIndex("ProjectId");
-
-                    b.ToTable("ProjectSKills");
-                });
-
             modelBuilder.Entity("Domain.Skill", b =>
                 {
                     b.Property<Guid>("Id")
@@ -256,12 +243,17 @@ namespace Persistence.Migrations
                     b.Property<string>("PhotoId")
                         .HasColumnType("text");
 
+                    b.Property<Guid?>("ProjectId")
+                        .HasColumnType("uuid");
+
                     b.Property<string>("SkillName")
                         .HasColumnType("text");
 
                     b.HasKey("Id");
 
                     b.HasIndex("PhotoId");
+
+                    b.HasIndex("ProjectId");
 
                     b.ToTable("Skills");
                 });
@@ -416,28 +408,11 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Domain.Photo", b =>
                 {
-                    b.HasOne("Domain.Project", null)
+                    b.HasOne("Domain.Project", "Project")
                         .WithMany("Photos")
                         .HasForeignKey("ProjectId");
-                });
-
-            modelBuilder.Entity("Domain.ProjectSkill", b =>
-                {
-                    b.HasOne("Domain.Project", "Project")
-                        .WithMany("Skills")
-                        .HasForeignKey("ProjectId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Domain.Skill", "SKill")
-                        .WithMany()
-                        .HasForeignKey("SkillId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
 
                     b.Navigation("Project");
-
-                    b.Navigation("SKill");
                 });
 
             modelBuilder.Entity("Domain.Skill", b =>
@@ -446,7 +421,13 @@ namespace Persistence.Migrations
                         .WithMany()
                         .HasForeignKey("PhotoId");
 
+                    b.HasOne("Domain.Project", "Project")
+                        .WithMany("Skills")
+                        .HasForeignKey("ProjectId");
+
                     b.Navigation("Photo");
+
+                    b.Navigation("Project");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

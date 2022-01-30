@@ -11,7 +11,7 @@ namespace Domain
         [NotMapped]
         public IFormFile PhotoFile { get; set; }
         public Photo Photo { get; set; }
-    }
 
+    }
 
 }
