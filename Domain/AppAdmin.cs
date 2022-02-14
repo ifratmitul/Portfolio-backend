@@ -1,11 +1,9 @@
 using Microsoft.AspNetCore.Identity;
+namespace Domain;
 
-namespace Domain
+public class AppAdmin : IdentityUser
 {
-    public class AppAdmin : IdentityUser
-    {
-        public string Name { get; set; }
-        public string AccessType { get; set; }
+    public string Name { get; set; }
+    public string AccessType { get; set; }
 
-    }
 }

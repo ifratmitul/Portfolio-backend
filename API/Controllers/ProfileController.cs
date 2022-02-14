@@ -1,15 +1,11 @@
-using System;
-using System.Threading.Tasks;
 using Application.PersonalInfo;
-using Domain;
-using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
     public class ProfileController : BaseApiController
     {
         [HttpGet]
-        public async Task<IActionResult> GetAllExperience()
+        public async Task<IActionResult> GetProfileDetails()
         {
             return HandleResult(await Mediator.Send(new Details.Query()));
         }

@@ -1,12 +1,8 @@
-using System;
-
-namespace Domain
+namespace Domain;
+public class ProjectSkill
 {
-    public class ProjectSkill
-    {
-        public Guid ProjectId { get; set; }
-        public Project Project { get; set; }
-        public Guid SkillId { get; set; }
-        public Skill SKill { get; set; }
-    }
+    public Guid ProjectId { get; set; }
+    public Project Project { get; set; }
+    public Guid SkillId { get; set; }
+    public Skill SKill { get; set; }
 }

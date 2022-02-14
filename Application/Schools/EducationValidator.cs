@@ -1,18 +1,14 @@
-using Domain;
 using FluentValidation;
-
-namespace Application.Schools
+namespace Application.Schools;
+public class EducationValidator : AbstractValidator<Education>
 {
-    public class EducationValidator : AbstractValidator<Education>
+    public EducationValidator()
     {
-        public EducationValidator()
-        {
-            RuleFor(x => x.Institution).NotEmpty().NotNull();
-            RuleFor(x => x.Degree).NotEmpty().NotNull();
-            RuleFor(x => x.Result).NotEmpty().NotNull();
-            RuleFor(x => x.StartDate).NotNull();
-            RuleFor(x => x.EndDate).NotNull();
-            RuleFor(x => x.Major).NotEmpty().NotNull();
-        }
+        RuleFor(x => x.Institution).NotEmpty().NotNull();
+        RuleFor(x => x.Degree).NotEmpty().NotNull();
+        RuleFor(x => x.Result).NotEmpty().NotNull();
+        RuleFor(x => x.StartDate).NotNull();
+        RuleFor(x => x.EndDate).NotNull();
+        RuleFor(x => x.Major).NotEmpty().NotNull();
     }
 }

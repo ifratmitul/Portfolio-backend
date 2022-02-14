@@ -1,47 +1,39 @@
-using System.Threading;
-using System.Threading.Tasks;
-using Application.Core;
-using Domain;
 using FluentValidation;
-using MediatR;
-using Persistence;
 
-namespace Application.Schools
+namespace Application.Schools;
+public class Create
 {
-    public class Create
+    public class Command : IRequest<Result<Unit>>
     {
-        public class Command : IRequest<Result<Unit>>
+
+        public Education Education { get; set; }
+
+    }
+
+    public class CommandValidator : AbstractValidator<Command>
+    {
+        public CommandValidator()
         {
+            RuleFor(x => x.Education).SetValidator(new EducationValidator());
+        }
+    }
 
-            public Education Education { get; set; }
-
+    public class Handler : IRequestHandler<Command, Result<Unit>>
+    {
+        private readonly DataContext _context;
+        public Handler(DataContext context)
+        {
+            _context = context;
         }
 
-        public class CommandValidator : AbstractValidator<Command>
+        public async Task<Result<Unit>> Handle(Command request, CancellationToken cancellationToken)
         {
-            public CommandValidator()
-            {
-                RuleFor(x => x.Education).SetValidator(new EducationValidator());
-            }
-        }
+            _context.Schools.Add(request.Education);
 
-        public class Handler : IRequestHandler<Command, Result<Unit>>
-        {
-            private readonly DataContext _context;
-            public Handler(DataContext context)
-            {
-                _context = context;
-            }
+            var result = await _context.SaveChangesAsync() > 0;
+            if (!result) return Result<Unit>.Failure("Failed to Create School");
 
-            public async Task<Result<Unit>> Handle(Command request, CancellationToken cancellationToken)
-            {
-                _context.Schools.Add(request.Education);
-
-                var result = await _context.SaveChangesAsync() > 0;
-                if (!result) return Result<Unit>.Failure("Failed to Create School");
-
-                return Result<Unit>.Success(Unit.Value);
-            }
+            return Result<Unit>.Success(Unit.Value);
         }
     }
 }

@@ -1,10 +1,6 @@
-
-
-namespace Domain
+namespace Domain;
+public class ProjectSkillDto
 {
-    public class ProjectSkillDto
-    {
-        public string SkillName { get; set; }
-        public string PhotoUrl { get; set; }
-    }
+    public string SkillName { get; set; }
+    public string PhotoUrl { get; set; }
 }

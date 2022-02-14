@@ -1,0 +1,14 @@
+global using System.Threading;
+global using System.Threading.Tasks;
+global using Application.Core;
+global using Domain;
+global using MediatR;
+global using Persistence;
+global using System;
+global using System.Collections.Generic;
+global using Microsoft.EntityFrameworkCore;
+global using AutoMapper;
+global using Application.Interface;
+global using System.Linq;
+global using AutoMapper.QueryableExtensions;
+global using Microsoft.AspNetCore.Http;

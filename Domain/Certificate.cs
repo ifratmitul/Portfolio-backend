@@ -1,12 +1,8 @@
-using System;
-
-namespace Domain
+namespace Domain;
+public class Certificate
 {
-    public class Certificate
-    {
-        public Guid Id { get; set; }
-        public string name { get; set; }
-        public DateTime Date { get; set; }
-        public string Url { get; set; }
-    }
+    public Guid Id { get; set; }
+    public string name { get; set; }
+    public DateTime Date { get; set; }
+    public string Url { get; set; }
 }
