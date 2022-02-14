@@ -1,9 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using Application.Schools;
-using Domain;
-using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {

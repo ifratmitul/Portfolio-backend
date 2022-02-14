@@ -1,8 +1,4 @@
-using System;
-using System.Threading.Tasks;
 using Application.Experiences;
-using Domain;
-using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
