@@ -1,0 +1,41 @@
+import Layout from "../layout/Layout";
+import useSWR from "swr";
+import style from "./landingPage.module.scss";
+import Animation from "./Animation";
+// const fetcher = (...args: any) => fetch(...args).then((res) => res.json());
+
+const LandingPage = () => {
+  // const { data, error } = useSWR("http://localhost:5000/api/profile", fetcher);
+  //console.log(data);
+  return (
+    <div className={style["hero"]}>
+      <Animation />
+      <section className={style["hero__main"]}>
+        <div className={style["hero__main--text-box"]}>
+          <div className="heading-primary">
+            <h4 className="heading-primary--sub">{"Hi there, I'm"}</h4>
+            <h1 className="heading-primary--main">Ifrat;</h1>
+            <h4 className="heading-primary--sub">
+              a Software Engineer | Front-end Developer
+            </h4>
+          </div>
+        </div>
+      </section>
+      <section className={style["hero__secondary"]}></section>
+    </div>
+  );
+};
+LandingPage.layout = Layout;
+
+// export async function getStaticProps() {
+//   const res = await fetch("http://localhost:5000/api/profile");
+//   console.log(res);
+//   const profile = await res.json();
+//   return {
+//     props: {
+//       profile,
+//     },
+//   };
+// }
+
+export default LandingPage;
