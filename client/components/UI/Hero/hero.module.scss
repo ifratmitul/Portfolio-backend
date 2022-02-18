@@ -1,6 +1,7 @@
 .hero {
   display: flex;
-  height: calc(100vh - 8.5rem);
+  // flex-direction: column;
+  height: 100vh;
 
   &__main {
     width: 50%;
@@ -15,4 +16,16 @@
       align-items: center;
     }
   }
+
+  &__secondary {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // position: relative;
+  }
+}
+
+.imagestyle {
+  opacity: 0.8;
+  border: 1px solid orange;
 }

@@ -3,10 +3,16 @@
   flex-direction: row;
   justify-content: space-between;
   height: 8.5rem;
-  // background-color: rgb(2, 27, 11);
-  border: 1px solid;
+  position: fixed;
+  top: 0;
+  width: 100%;
   overflow: hidden;
   color: black;
+  &__shadow {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background-color: #ebf2f2;
+    z-index: 10;
+  }
   &__logo {
     width: 10%;
     display: flex;

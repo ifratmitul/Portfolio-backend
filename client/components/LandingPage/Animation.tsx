@@ -8,13 +8,13 @@ function Animation() {
         <li>CSS</li>
         <li>React.js</li>
         <li>C#</li>
-        <li>JS</li>
+        <li></li>
         <li>.NET</li>
         <li>undefined;</li>
         <li>;</li>
-        <li>TS</li>
+        <li></li>
         <li>{"<></>"}</li>
-        <li>{"Coffee = code;"}</li>
+        <li></li>
       </ul>
     </>
   );

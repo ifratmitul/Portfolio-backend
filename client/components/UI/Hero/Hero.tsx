@@ -1,10 +1,11 @@
-import Layout from "../layout/Layout";
+import Layout from "../../layout/Layout";
+import Image from "next/image";
+import Animation from "../../LandingPage/Animation";
+import heroImage from "../../../assets/image/work.svg";
+import style from "./hero.module.scss";
 import useSWR from "swr";
-import style from "./landingPage.module.scss";
-import Animation from "./Animation";
 // const fetcher = (...args: any) => fetch(...args).then((res) => res.json());
-
-const LandingPage = () => {
+function Hero() {
   // const { data, error } = useSWR("http://localhost:5000/api/profile", fetcher);
   //console.log(data);
   return (
@@ -18,14 +19,24 @@ const LandingPage = () => {
             <h4 className="heading-primary--sub">
               a Software Engineer | Front-end Developer
             </h4>
+            <a type="button" className="btn-link" href="#project">
+              View my work &#8594;
+            </a>
           </div>
         </div>
       </section>
-      <section className={style["hero__secondary"]}></section>
+      <section className={style["hero__secondary"]}>
+        <Image
+          src={heroImage}
+          className={style["imagestyle"]}
+          objectFit="contain"
+        />
+      </section>
     </div>
   );
-};
-LandingPage.layout = Layout;
+}
+
+Hero.layout = Layout;
 
 // export async function getStaticProps() {
 //   const res = await fetch("http://localhost:5000/api/profile");
@@ -38,4 +49,4 @@ LandingPage.layout = Layout;
 //   };
 // }
 
-export default LandingPage;
+export default Hero;

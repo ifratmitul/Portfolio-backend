@@ -1,7 +1,6 @@
-
-import Head from 'next/head'
-import Layout from '../components/layout/Layout'
-import LandingPage from '../components/UI/LandingPage'
+import Head from "next/head";
+import Layout from "../components/layout/Layout";
+import LandingPage from "../components/LandingPage/LandingPage";
 const Home = () => {
   return (
     <>
@@ -12,9 +11,9 @@ const Home = () => {
       </Head>
       <LandingPage />
     </>
-  )
-}
+  );
+};
 
-Home.layout = Layout
+Home.layout = Layout;
 
-export default Home
+export default Home;
