@@ -1,6 +1,6 @@
 # Portfolio
 
-Run to commands in the following order to run the project. (Before running the command make sure you have `docker`, `node.js`, `next.js` and `.NET6` installed in your device)
+Run the commands in the following order to run the project. (Before running the command make sure you have `docker`, `node.js`, `next.js` and `.NET6` installed in your device)
 
 ## Docker command to create db image
 
@@ -12,4 +12,4 @@ Change directory to API run `dotnet build` then run `dotnet watch run`
 
 ## Run front-end
 
-Change directory to client/ then run `npm run dev` in your terminal.
+Change directory to client/ run `npm install` then run `npm run dev` in your terminal.
