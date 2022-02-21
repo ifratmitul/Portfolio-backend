@@ -1,15 +1,12 @@
 import Layout from "../layout/Layout";
-import ProjectSummery from "./ProjectSummery";
-import Hero from "../UI/Hero/Hero";
+import Projects from "../Project/Projects";
+import Hero from "./Hero";
 
 const LandingPage = () => {
   return (
     <>
       <Hero />
-      <ProjectSummery />
-      <ProjectSummery />
-      <ProjectSummery />
-      <ProjectSummery />
+      <Projects />
     </>
   );
 };

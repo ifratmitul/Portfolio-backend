@@ -10,6 +10,7 @@
   color: black;
   &__shadow {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    opacity: 0.8;
     background-color: #ebf2f2;
     z-index: 10;
   }

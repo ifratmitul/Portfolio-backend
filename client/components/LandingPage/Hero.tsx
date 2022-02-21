@@ -1,13 +1,9 @@
-import Layout from "../../layout/Layout";
+import Layout from "../layout/Layout";
 import Image from "next/image";
-import Animation from "../../LandingPage/Animation";
-import heroImage from "../../../assets/image/work.svg";
+import heroImage from "../../assets/image/work.svg";
 import style from "./hero.module.scss";
-import useSWR from "swr";
-// const fetcher = (...args: any) => fetch(...args).then((res) => res.json());
+import Animation from "../UI/Animation";
 function Hero() {
-  // const { data, error } = useSWR("http://localhost:5000/api/profile", fetcher);
-  //console.log(data);
   return (
     <div className={style["hero"]}>
       <Animation />

@@ -1,7 +1,8 @@
 import Layout from "../layout/Layout";
-import style from "./projectsummery.module.scss";
+import ProjectCard from "./ProjectCard";
+import style from "./projects.module.scss";
 
-function ProjectSummery() {
+function Projects() {
   return (
     <div className={style["project"]} id="project">
       <section className={style["project__text-box"]}>
@@ -9,9 +10,13 @@ function ProjectSummery() {
           <h1 className="heading-secondary--main">Projects</h1>
         </div>
       </section>
+
+      <section className={style["project__list"]}>
+        <ProjectCard />
+      </section>
     </div>
   );
 }
 
-ProjectSummery.layout = Layout;
-export default ProjectSummery;
+Projects.layout = Layout;
+export default Projects;
