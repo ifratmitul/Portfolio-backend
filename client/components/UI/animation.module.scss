@@ -17,6 +17,7 @@
   font-size: 20px;
   background: transparent;
   animation: animate 25s linear infinite;
+  animation-delay: var(--typewriterSpeed);
   bottom: -150px;
 
   &:nth-child(1) {

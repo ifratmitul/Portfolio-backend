@@ -1,6 +1,7 @@
 .project {
-  background-color: #f5f5f5;
   padding: 2rem;
+  margin-top: -8.5rem;
+  // background-image: $background;
 
   &__text-box {
     display: flex;
@@ -8,7 +9,11 @@
   }
 
   &__list {
-    border: 1px solid orange;
+    padding: 5rem;
     margin: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
   }
 }

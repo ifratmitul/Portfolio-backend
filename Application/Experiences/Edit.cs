@@ -28,6 +28,7 @@ public class Edit
                 var experience = await _context.Experiences.FindAsync(request.Experience.Id);
                 if (experience == null) return null;
                 _mapper.Map(request.Experience, experience);
+                request.Experience.Logo = experience.Logo;
 
             }
             else

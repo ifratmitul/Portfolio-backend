@@ -1,7 +1,5 @@
 import NavStyle from "./navbar.module.scss";
 import Link from "next/link";
-import { faFileArrowDown } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import useNavShadow from "../hooks/use-navShadow";
 
 function Navbar() {
@@ -16,7 +14,6 @@ function Navbar() {
       <div className={NavStyle["navbar__logo"]}>
         <Link href="/">
           <a>
-            {" "}
             <h2>Ifrat;</h2>
           </a>
         </Link>
@@ -35,21 +32,14 @@ function Navbar() {
           </li>
           <li className={NavStyle["navbar__links--list-item"]}>
             <Link href="/">
-              <a className={NavStyle["nav-btn"]}>Contact</a>
+              <a className={NavStyle["nav-btn"]}>Skills</a>
             </Link>
           </li>
           <li className={NavStyle["navbar__links--list-item"]}>
             <Link href="/">
-              <a className={NavStyle["nav-btn"]}>
-                <FontAwesomeIcon
-                  icon={faFileArrowDown}
-                  style={{ height: "15px" }}
-                />
-                Resume
-              </a>
+              <a className={NavStyle["nav-btn"]}>Contact</a>
             </Link>
           </li>
-
           <li className={NavStyle["navbar__links--list-item"]}>
             <a className={NavStyle["nav-btn"]} type="button">
               Icon
