@@ -1,6 +1,8 @@
 import React from "react";
 import { Project } from "../../Model/project";
 import style from "./projectcard.module.scss";
+import { useSelector } from "react-redux";
+import { Education } from "../../Model/education";
 
 interface Props {
   project: Project;
