@@ -8,10 +8,11 @@
   width: 100%;
   overflow: hidden;
   color: black;
+  z-index: 1;
   &__shadow {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     opacity: 0.8;
-    background-color: #ebf2f2;
+    background-color: var(--main-background-color);
     z-index: 10;
   }
   &__logo {
@@ -24,11 +25,11 @@
   }
 
   &__links {
-    width: 35%;
+    width: 30%;
     margin: 0 2rem;
 
     &--list {
-      font-weight: 500;
+      font-weight: 550;
       margin: 0;
       padding: 10px;
       display: flex;

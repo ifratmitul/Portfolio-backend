@@ -1,7 +1,9 @@
 import axios, { AxiosResponse } from "axios";
 import { Education } from "../Model/education";
+import { Experience } from "../Model/Experience";
+import { Skill } from "../Model/skill";
 
-const baseUrl = "http://localhost:5000/api";
+axios.defaults.baseURL = "http://localhost:5000/api";
 
 const responseBody = <T>(response: AxiosResponse<T>) => response.data;
 
@@ -13,11 +15,21 @@ const request = {
 };
 
 const Education = {
-  list: () => request.get<Education[]>(baseUrl + "/education"),
+  list: () => request.get<Education[]>("/education"),
+};
+
+const Experience = {
+  list: () => request.get<Experience[]>("/experience"),
+};
+
+const Skills = {
+  list: () => request.get<Skill[]>("/skill"),
 };
 
 const agent = {
   Education,
+  Experience,
+  Skills,
 };
 
 export default agent;

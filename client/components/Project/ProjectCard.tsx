@@ -11,16 +11,23 @@ interface Props {
 function ProjectCard() {
   return (
     <div className={style["card"]}>
-      <div className={style["card-header"]}>
+      <div className={style["card__image"]}>
         <img
-          src="https://c0.wallpaperflare.com/preview/483/210/436/car-green-4x4-jeep.jpg"
+          src="https://www.springboard.com/blog/wp-content/uploads/2021/10/shutterstock_1702515220-1.jpg"
           alt="rover"
         />
       </div>
-      {/* <div className={style["card-body"]}>
-        <h4>Why is the Tesla Cybertruck designed the way it is?</h4>
-        <p>An exploration into the trucks polarising design</p>
-      </div> */}
+      <div className={style["card__content"]}>
+        <h2 className={style["card__title"]}>Something awesome</h2>
+        <p className={style["card__body"]}>
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+          Consequuntur, eos quasi. Alias qui dolore quae quos officia, maiores
+          cum sequi.
+        </p>
+        <a href="#" className={style["card__btn"]}>
+          Learn More
+        </a>
+      </div>
     </div>
   );
 }

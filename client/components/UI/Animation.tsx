@@ -4,13 +4,13 @@ function Animation() {
     <>
       <ul className={style["circles"]}>
         <li>Angular</li>
-        <li>Next.js</li>
+        <li>undefine;</li>
         <li>CSS</li>
-        <li>React.js</li>
+        <li>React.Js</li>
         <li>C#</li>
         <li></li>
         <li>.NET</li>
-        <li>undefined;</li>
+        <li>Next.Js</li>
         <li>;</li>
         <li></li>
         <li>{"<></>"}</li>

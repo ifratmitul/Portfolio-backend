@@ -1,32 +1,31 @@
 import Layout from "../layout/Layout";
-import Image from "next/image";
-import heroImage from "../../assets/image/work.svg";
 import style from "./hero.module.scss";
 import Animation from "../UI/Animation";
 function Hero() {
   return (
     <div className={style["hero"]}>
-      <Animation />
-      <section className={style["hero__main"]}>
+      {/* <Animation /> */}
+      <section aria-labelledby="hero" className={style["hero__main"]}>
         <div className={style["hero__main--text-box"]}>
           <div className="heading-primary">
-            <h4 className="heading-primary--sub">{"Hi there, I'm"}</h4>
-            <h1 className="heading-primary--main">Ifrat;</h1>
-            <h4 className="heading-primary--sub">
-              a Software Engineer | Front-end Developer
-            </h4>
-            <a type="button" className="btn-link" href="#project">
-              View my work &#8594;
-            </a>
+            <h1
+              className={`heading-primary--main ${style["hero__heading--main"]}`}
+            >
+              {"Hi there, I'm Ifrat"};
+            </h1>
+
+            <div
+              className={` ${style["hero__subtitle--box"]} ${style["hero__heading--subtitle"]}`}
+            >
+              <h4 className={`heading-primary--sub`}>
+                Software Engineer | Front-end Developer
+              </h4>
+              <a type="button" className="btn-link" href="#project">
+                View my work &#8595;
+              </a>
+            </div>
           </div>
         </div>
-      </section>
-      <section className={style["hero__secondary"]}>
-        <Image
-          src={heroImage}
-          className={style["imagestyle"]}
-          objectFit="contain"
-        />
       </section>
     </div>
   );

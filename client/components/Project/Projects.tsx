@@ -4,17 +4,21 @@ import style from "./projects.module.scss";
 
 function Projects() {
   return (
-    <div className={style["project"]} id="project">
+    <section
+      aria-labelledby="project"
+      className={style["project"]}
+      id="project"
+    >
       <section className={style["project__text-box"]}>
-        <div className="heading-secondary">
-          <h1 className="heading-secondary--main">Projects</h1>
-        </div>
+        <h1 className="heading-primary--sub">Projects</h1>
       </section>
 
       <section className={style["project__list"]}>
         <ProjectCard />
+        <ProjectCard />
+        <ProjectCard />
       </section>
-    </div>
+    </section>
   );
 }
 
