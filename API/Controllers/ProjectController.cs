@@ -15,6 +15,13 @@ namespace API.Controllers
             return HandleResult(await Mediator.Send(new Create.Command { Project = project }));
         }
 
+        [HttpPut("{id}")]
+        public async Task<IActionResult> EditProject(Guid id, [FromForm] Project project)
+        {
+            project.Id = id;
+            return HandleResult(await Mediator.Send(new Edit.Command { Project = project }));
+        }
+
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteProject(Guid id)
         {

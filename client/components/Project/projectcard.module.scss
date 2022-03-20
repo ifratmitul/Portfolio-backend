@@ -1,5 +1,8 @@
+@import "../../styles/colors.scss";
+
 .card {
-  color: var(--card-100);
+  box-shadow: $project_card-shadow;
+  color: $card-100;
   background-size: cover;
   max-width: 35rem;
   max-height: 25rem;
@@ -32,16 +35,11 @@
     position: absolute;
     bottom: 0;
     left: 0;
-    height: 60%;
+    height: 70%;
     color: white;
     padding: 1.5em;
     transform-origin: bottom;
     transition: transform 500ms ease;
-    background: linear-gradient(
-      hsl(0 0% 0% / 0),
-      hsl(20 0% 0% / 0.3) 20%,
-      hsl(0 0% 0% / 1)
-    );
 
     & > * {
       &:not(:last-child) {
@@ -62,7 +60,7 @@
       left: calc(5px * -3);
       bottom: 0;
       width: calc(100% + 15px);
-      background: var(--card-400);
+      background: $card-400;
       // transform: scaleX(0);
       transform-origin: left;
       transition: transform 1000ms ease;
@@ -73,8 +71,8 @@
     cursor: pointer;
     display: inline-block;
     text-decoration: none;
-    color: var(--card-900);
-    background-color: var(--card-400);
+    color: white;
+    background-color: $card-400;
     padding: 0.5em 1.25em;
     width: max-content;
     font-size: 1.2rem;
@@ -98,6 +96,11 @@
 
     &:hover &__content,
     &:focus-within &__content {
+      background: linear-gradient(
+        hsl(0 0% 0% / 0),
+        rgba(0, 0, 0, 0.575) 20%,
+        hsl(0 0% 0% / 1)
+      );
       transform: translateY(0);
     }
 

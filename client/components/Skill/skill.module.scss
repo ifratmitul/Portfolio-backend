@@ -1,9 +1,10 @@
 .skill {
   min-height: 40vh;
   display: flex;
+  z-index: 1;
 
   &__list {
-    width: 65%;
+    width: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -16,7 +17,7 @@
   }
 
   &__text {
-    width: 35%;
+    width: 50%;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -28,6 +29,12 @@
     }
     p {
       font-size: 1.5rem;
+    }
+
+    a {
+      margin: 4px;
+      font-size: 1.5rem;
+      border-bottom: 1px dotted;
     }
   }
 }
