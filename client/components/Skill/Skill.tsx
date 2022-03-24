@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchSkills } from "../../actions/SkillAction";
@@ -17,6 +18,13 @@ const Skill = () => {
 
   return (
     <section className={style["skill"]}>
+      <div className={style["skill__text"]}>
+        <h4>Skills</h4>
+        <p>{"I love learning new technologies."}</p>
+        <Link href="/">
+          <a>See more</a>
+        </Link>
+      </div>
       <div className={style["skill__list"]}>
         {skillList.length > 0 && (
           <ul>
@@ -25,10 +33,6 @@ const Skill = () => {
             ))}
           </ul>
         )}
-      </div>
-      <div className={style["skill__text"]}>
-        <h4>Skills</h4>
-        <p>{"I love learning new technologies"}</p>
       </div>
     </section>
   );

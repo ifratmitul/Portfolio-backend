@@ -1,6 +1,7 @@
 import axios, { AxiosResponse } from "axios";
 import { Education } from "../Model/education";
 import { Experience } from "../Model/Experience";
+import { Project } from "../Model/project";
 import { Skill } from "../Model/skill";
 
 axios.defaults.baseURL = "http://localhost:5000/api";
@@ -26,10 +27,15 @@ const Skills = {
   list: () => request.get<Skill[]>("/skill"),
 };
 
+const Projects = {
+  list: () => request.get<Project[]>("/project"),
+};
+
 const agent = {
   Education,
   Experience,
   Skills,
+  Projects,
 };
 
 export default agent;

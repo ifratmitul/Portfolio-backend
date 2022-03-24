@@ -5,15 +5,6 @@ body {
   background-color: #ffffff;
 }
 
-:root {
-  --main-background-color: #ffffff;
-  --card-900: hsl(207, 19%, 9%);
-  --card-100: hsl (0, 0%, 100%);
-  --card-400: #54da48;
-  --typewriterSpeed: 4s;
-  --typewriterCharacters: 24;
-}
-
 html {
   font-size: 62.5%; //1 rem = 10/16
   scroll-behavior: smooth;

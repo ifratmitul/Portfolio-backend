@@ -20,6 +20,7 @@ public class MappingProfiles : Profile
         .ForMember(dto => dto.PhotoUrl, source => source.MapFrom(m => m.Photo.Url));
 
         CreateMap<ProjectSkill, ProjectSkillDto>()
+         .ForMember(dto => dto.Id, s => s.MapFrom(m => m.SKill.Id))
          .ForMember(dto => dto.SkillName, s => s.MapFrom(m => m.SKill.SkillName))
          .ForMember(dto => dto.PhotoUrl, s => s.MapFrom(m => m.SKill.Photo.Url));
 
