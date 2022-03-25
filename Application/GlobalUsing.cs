@@ -12,3 +12,4 @@ global using Application.Interface;
 global using System.Linq;
 global using AutoMapper.QueryableExtensions;
 global using Microsoft.AspNetCore.Http;
+global using System.Text.Json;

@@ -21,13 +21,27 @@ public class Create
     public class Handler : IRequestHandler<Command, Result<Unit>>
     {
         private readonly DataContext _context;
-        public Handler(DataContext context)
+        private readonly IPhotoAccessor _photoAccessor;
+        public Handler(DataContext context, IPhotoAccessor photoAccessor)
         {
+            _photoAccessor = photoAccessor;
             _context = context;
         }
 
         public async Task<Result<Unit>> Handle(Command request, CancellationToken cancellationToken)
         {
+
+            var photoRes = await _photoAccessor.AddPhoto(request.Education.PhotoFile);
+            if (photoRes == null) return Result<Unit>.Failure("Failed to upload photo");
+
+            var photo = new Photo
+            {
+                Id = photoRes.PublicId,
+                Url = photoRes.Url,
+                IsMain = true
+            };
+
+            request.Education.Logo = photo;
             _context.Schools.Add(request.Education);
 
             var result = await _context.SaveChangesAsync() > 0;

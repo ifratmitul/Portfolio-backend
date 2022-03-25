@@ -1,5 +1,6 @@
-namespace Domain;
-public class Education
+namespace Application.Schools;
+
+public class EducationDto
 {
     public Guid Id { get; set; }
     public string Institution { get; set; }
@@ -10,6 +11,4 @@ public class Education
     public double Result { get; set; }
     public int Priority { get; set; }
     public Photo Logo { get; set; }
-    [NotMapped]
-    public IFormFile PhotoFile { get; set; }
 }

@@ -1,37 +1,7 @@
-$background-style: linear-gradient(
-    318deg,
-    transparent 0%,
-    transparent 30%,
-    rgba(249, 249, 249, 0.02) 30%,
-    rgba(249, 249, 249, 0.02) 36%,
-    transparent 36%,
-    transparent 100%
-  ),
-  linear-gradient(
-    439deg,
-    transparent 0%,
-    transparent 53%,
-    rgba(140, 140, 140, 0.14) 53%,
-    rgba(140, 140, 140, 0.14) 63%,
-    transparent 63%,
-    transparent 100%
-  ),
-  linear-gradient(
-    378deg,
-    transparent 0%,
-    transparent 28%,
-    rgba(1, 1, 1, 0.04) 28%,
-    rgba(1, 1, 1, 0.04) 38%,
-    transparent 38%,
-    transparent 100%
-  ),
-  linear-gradient(184deg, rgb(255, 255, 255), rgb(255, 255, 255));
-
 .experience {
   padding: 2rem;
   min-height: 40vh;
   display: flex;
-  // background-image: $background-style;
   &__details {
     width: 50%;
 
