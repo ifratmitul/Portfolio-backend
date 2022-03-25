@@ -12,14 +12,14 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddDegrees(Education education)
+        public async Task<IActionResult> AddDegrees([FromForm] Education education)
         {
 
             return HandleResult(await Mediator.Send(new Create.Command { Education = education }));
 
         }
         [HttpPut("{id}")]
-        public async Task<IActionResult> EditDegree(Guid id, Education education)
+        public async Task<IActionResult> EditDegree(Guid id, [FromForm] Education education)
         {
             education.Id = id;
 

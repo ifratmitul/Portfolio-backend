@@ -10,5 +10,7 @@ public class EducationValidator : AbstractValidator<Education>
         RuleFor(x => x.StartDate).NotNull();
         RuleFor(x => x.EndDate).NotNull();
         RuleFor(x => x.Major).NotEmpty().NotNull();
+        RuleFor(x => x.PhotoFile).NotEmpty().NotNull();
+
     }
 }

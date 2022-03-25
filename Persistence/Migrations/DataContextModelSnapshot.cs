@@ -124,8 +124,14 @@ namespace Persistence.Migrations
                     b.Property<string>("Institution")
                         .HasColumnType("longtext");
 
+                    b.Property<string>("LogoId")
+                        .HasColumnType("varchar(255)");
+
                     b.Property<string>("Major")
                         .HasColumnType("longtext");
+
+                    b.Property<int>("Priority")
+                        .HasColumnType("int");
 
                     b.Property<double>("Result")
                         .HasColumnType("double");
@@ -134,6 +140,8 @@ namespace Persistence.Migrations
                         .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("LogoId");
 
                     b.ToTable("Schools");
                 });
@@ -404,6 +412,15 @@ namespace Persistence.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
+                });
+
+            modelBuilder.Entity("Domain.Education", b =>
+                {
+                    b.HasOne("Domain.Photo", "Logo")
+                        .WithMany()
+                        .HasForeignKey("LogoId");
+
+                    b.Navigation("Logo");
                 });
 
             modelBuilder.Entity("Domain.Experience", b =>

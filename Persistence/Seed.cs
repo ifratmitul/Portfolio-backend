@@ -30,37 +30,6 @@ namespace Persistence
             }
 
 
-            if (!context.Schools.Any())
-            {
-
-                var schools = new List<Education>
-            {
-                new Education
-                {
-                    Institution ="North South University",
-                    StartDate = DateTime.ParseExact("05/01/2015", "d", null),
-                    EndDate = DateTime.ParseExact("06/01/2021", "d", null),
-                    Degree=" Bachelor of Science",
-                    Major = "Computer Science & Engineering",
-                    Result = 3.34
-                },
-
-                new Education
-                {
-                    Institution ="Dhaka City College",
-                    StartDate = DateTime.ParseExact("05/01/2012", "d", null),
-                    EndDate = DateTime.ParseExact("05/01/2014", "d", null),
-                    Degree = "Higher Secondary Certificate (HSC)",
-                    Major = "Science",
-                    Result = 5.00
-                },
-
-            };
-
-                await context.Schools.AddRangeAsync(schools);
-
-            }
-
             if (!context.Certificates.Any())
             {
                 var seedCertificates = new List<Certificate>{

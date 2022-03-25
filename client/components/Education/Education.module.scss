@@ -1,0 +1,33 @@
+.education-container {
+  padding: 2rem;
+  min-height: 40vh;
+  display: flex;
+  &__text {
+    width: 50%;
+    font-size: 3rem;
+  }
+
+  &__list {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.education__list {
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      &:not(:first-child) {
+        margin-top: 1rem;
+      }
+    }
+  }
+}
+
+.education-item {
+}
