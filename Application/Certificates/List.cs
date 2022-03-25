@@ -2,22 +2,27 @@ namespace Application.Certificates;
 
 public class List
 {
-    public class Query : IRequest<Result<List<Certificate>>>
+    public class Query : IRequest<Result<List<CertificateDto>>>
     {
 
     }
 
-    public class Handler : IRequestHandler<Query, Result<List<Certificate>>>
+    public class Handler : IRequestHandler<Query, Result<List<CertificateDto>>>
     {
         private readonly DataContext _context;
-        public Handler(DataContext context)
+        private readonly IMapper _mapper;
+        public Handler(DataContext context, IMapper mapper)
         {
+            _mapper = mapper;
             _context = context;
         }
 
-        public async Task<Result<List<Certificate>>> Handle(Query request, CancellationToken cancellationToken)
+        public async Task<Result<List<CertificateDto>>> Handle(Query request, CancellationToken cancellationToken)
         {
-            return Result<List<Certificate>>.Success(await _context.Certificates.ToListAsync(cancellationToken));
+
+            var certificates = await _context.Certificates.ProjectTo<CertificateDto>(_mapper.ConfigurationProvider).ToListAsync(cancellationToken);
+
+            return Result<List<CertificateDto>>.Success(certificates);
         }
 
     }

@@ -31,5 +31,8 @@ public class MappingProfiles : Profile
         CreateMap<Education, Schools.EducationDto>()
         .ForMember(dto => dto.Logo, s => s.MapFrom(e => e.Logo));
 
+        CreateMap<Certificate, Certificates.CertificateDto>()
+        .ForMember(dto => dto.Logo, s => s.MapFrom(e => e.Logo));
+
     }
 }
