@@ -6,17 +6,10 @@ import ExperienceItem from "./Experience-item";
 import style from "./experience.module.scss";
 
 const Experience = () => {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchExperienceData());
-  }, [dispatch]);
 
   const experienceList: Experience[] = useSelector(
     (state: any) => state.experience
   );
-  console.log(experienceList);
-
   return (
     <section className={style["experience"]}>
       <div className={style["experience__details"]}>

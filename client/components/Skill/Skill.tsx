@@ -1,21 +1,13 @@
 import Link from "next/link";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchSkills } from "../../actions/SkillAction";
+import { useSelector } from "react-redux";
 import { Skill } from "../../Model/skill";
-import SkillItem from "./Skill-item";
+import SkillList from "./Skill-list";
 import style from "./skill.module.scss";
 
 const Skill = () => {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchSkills());
-    return () => {};
-  }, [dispatch]);
 
   const skillList: Skill[] = useSelector((state: any) => state.skill);
-  console.log(skillList);
-
+  
   return (
     <section className={style["skill"]}>
       <div className={style["skill__text"]}>
@@ -27,11 +19,12 @@ const Skill = () => {
       </div>
       <div className={style["skill__list"]}>
         {skillList.length > 0 && (
-          <ul>
-            {skillList.map((item: Skill) => (
-              <SkillItem key={item.id} skill={item} />
-            ))}
-          </ul>
+          <SkillList skills={skillList} />
+          // <ul>
+          //   {skillList.map((item: Skill) => (
+          //     <SkillItem key={item.id} skill={item} />
+          //   ))}
+          // </ul>
         )}
       </div>
     </section>

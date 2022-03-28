@@ -6,19 +6,16 @@ import { Project } from "../../Model/project";
 import Layout from "../layout/Layout";
 import ProjectCard from "./ProjectCard";
 import style from "./projects.module.scss";
+interface Props {
+  providedIn: string;
+}
 
-function Projects() {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(FetchProjects());
-    return () => {};
-  }, [dispatch]);
-
+function Projects({ providedIn }: Props) {
   const projects: Project[] = useSelector((state: any) => state.project);
   const topProjects: Project[] =
     projects?.length > 3 ? projects.slice(0, 3) : projects;
-
-  console.log(topProjects);
+  const projectToShow: Project[] =
+    providedIn === "MAIN" ? topProjects : projects;
 
   return (
     <section
@@ -26,19 +23,21 @@ function Projects() {
       className={style["project"]}
       id="project"
     >
-      <section className={style["project__text-box"]}>
-        <h1 className="heading-primary--sub">Projects</h1>
-        <p>
-          These are few of my top projects. See more of my projects
-          <Link href="/projects">
-            <a> here </a>
-          </Link>
-        </p>
-      </section>
+      {providedIn === "MAIN" ? (
+        <section className={style["project__text-box"]}>
+          <h1 className="heading-primary--sub">Projects</h1>
+          <p>
+            These are few of my top projects. See more of my projects
+            <Link href="/projects">
+              <a> here </a>
+            </Link>
+          </p>
+        </section>
+      ) : null}
 
       <section className={style["project__list"]}>
-        {topProjects?.length > 0 &&
-          topProjects.map((item: Project) => (
+        {projectToShow?.length > 0 &&
+          projectToShow.map((item: Project) => (
             <ProjectCard key={item.id} project={item} />
           ))}
       </section>

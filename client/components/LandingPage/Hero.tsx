@@ -18,7 +18,7 @@ function Hero() {
               className={` ${style["hero__subtitle--box"]} ${style["hero__heading--subtitle"]}`}
             >
               <h4 className={`heading-primary--sub`}>
-                Software Engineer | Front-end Developer
+                Software Engineer
               </h4>
               <a type="button" className="btn-link" href="#project">
                 View my work &#8595;
