@@ -1,4 +1,5 @@
 import React from "react";
+import { dateFormatter } from "../../common/helper";
 import { Experience } from "../../Model/Experience";
 import style from "./experience-item.module.scss";
 
@@ -33,28 +34,6 @@ const ExperienceItem = ({ experience }: Props) => {
   );
 };
 
-const dateFormatter = (date: Date): string => {
-  const months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
 
-  let month: string = months[date.getMonth()];
-  let year: string = date.getFullYear().toString();
-  console.log(year);
-
-  let res: string = month + " " + year;
-  return res;
-};
 
 export default ExperienceItem;

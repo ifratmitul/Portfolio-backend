@@ -119,3 +119,12 @@ a {
     ),
     linear-gradient(184deg, rgb(255, 255, 255), rgb(255, 255, 255));
 }
+
+
+.not-found {
+  height: 120vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}

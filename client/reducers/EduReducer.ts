@@ -8,7 +8,7 @@ const EducationSlice = createSlice({
   initialState: initialEducationState,
   reducers: {
     getEducationList(state, data) {
-      state = [...data.payload, ...state];
+      state = [...data.payload];
 
       return state;
     },

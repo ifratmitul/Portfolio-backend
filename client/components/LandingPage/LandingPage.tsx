@@ -1,3 +1,4 @@
+import EducationContainer from "../Education/EducationContainer";
 import Experience from "../Experience/Experience";
 import Layout from "../layout/Layout";
 import Projects from "../Project/Projects";
@@ -9,8 +10,9 @@ const LandingPage = () => {
     <>
       <Hero />
       <div className="information-wrapper">
-        <Projects />
+        <Projects providedIn="MAIN"/>
         <Experience />
+        <EducationContainer />
         <Skill />
       </div>
     </>

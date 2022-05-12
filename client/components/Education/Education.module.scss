@@ -5,13 +5,20 @@
   &__text {
     width: 50%;
     font-size: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   &__list {
     width: 50%;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
+     
+    ul {
+      list-style: none;
+    }
   }
 }
 
@@ -30,4 +37,34 @@
 }
 
 .education-item {
+  &__info {
+    display: flex;
+    align-items: center;
+
+    &-img {
+      margin-right: 1rem;
+      height: 70px;
+      img {
+        height: 100%;
+        object-fit: contain;
+      }
+    }
+
+    &-text {
+      h4 {
+        font-size: 2rem;
+      }
+
+      h5 {
+        font-size: 1.5rem;
+        color: rgb(70, 69, 69);
+      }
+    }
+  }
+
+  &__details {
+    padding: 5px 0;
+    font-size: 14px;
+    text-align: justify;
+  }
 }

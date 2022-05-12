@@ -1,4 +1,4 @@
-import axios, { AxiosResponse } from "axios";
+import axios, { AxiosError, AxiosResponse } from "axios";
 import { Education } from "../Model/education";
 import { Experience } from "../Model/Experience";
 import { Project } from "../Model/project";
