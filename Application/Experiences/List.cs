@@ -18,9 +18,11 @@ public class List
 
         public async Task<Result<List<ExperienceDto>>> Handle(Query request, CancellationToken cancellationToken)
         {
-            var exp = await _context.Experiences.ProjectTo<ExperienceDto>(_mapper.ConfigurationProvider)
-            .ToListAsync(cancellationToken);
-
+            var exp = await _context.Experiences
+                                    .ProjectTo<ExperienceDto>(_mapper.ConfigurationProvider)
+                                    .OrderByDescending(e => e.StartDate)
+                                    .ToListAsync(cancellationToken);
+            
             return Result<List<ExperienceDto>>.Success(exp);
         }
 
