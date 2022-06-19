@@ -24,7 +24,6 @@ public class Edit
         {
             var data = await _context.Schools.Include(e => e.Logo).Where(e => e.Id == request.Education.Id).FirstOrDefaultAsync();
             if (data == null) return null;
-            Console.WriteLine(JsonSerializer.Serialize(data));
 
             if (request.Education.PhotoFile != null)
             {

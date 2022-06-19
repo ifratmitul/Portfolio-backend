@@ -28,6 +28,7 @@ public class MappingProfiles : Profile
         .ForMember(dto => dto.Photos, s => s.MapFrom(m => m.Photos))
         .ForMember(dto => dto.Skills, s => s.MapFrom(m => m.Skills));
 
+        CreateMap<Education, Education>();
         CreateMap<Education, Schools.EducationDto>()
         .ForMember(dto => dto.Logo, s => s.MapFrom(e => e.Logo));
 
