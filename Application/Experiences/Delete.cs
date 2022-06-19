@@ -23,9 +23,9 @@ public class Delete
             if (experience == null) return null;
             var photo = _photoAccessor.DeletePhoto(experience.Logo.Id);
             if (photo == null) return Result<Unit>.Failure("Failed to delete photo");
-
-            _context.Remove(experience);
-            _context.Remove(experience.Logo);
+            
+            _context.Photos.Remove(experience.Logo);
+            _context.Experiences.Remove(experience);
             var result = await _context.SaveChangesAsync() > 0;
             if (!result) return Result<Unit>.Failure("Failed to delete");
 
