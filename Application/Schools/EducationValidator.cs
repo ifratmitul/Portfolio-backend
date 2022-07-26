@@ -8,9 +8,8 @@ public class EducationValidator : AbstractValidator<Education>
         RuleFor(x => x.Degree).NotEmpty().NotNull();
         RuleFor(x => x.Result).NotEmpty().NotNull();
         RuleFor(x => x.StartDate).NotNull();
-        RuleFor(x => x.EndDate).NotNull();
+        RuleFor(x => x.EndDate).NotNull().GreaterThan(x => x.StartDate);
         RuleFor(x => x.Major).NotEmpty().NotNull();
-        RuleFor(x => x.PhotoFile).NotEmpty().NotNull();
 
     }
 }

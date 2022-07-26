@@ -45,6 +45,10 @@ public class Edit
                 };
                 request.Education.Logo = photo;
             }
+            else
+            {
+                request.Education.Logo = data.Logo;
+            }
 
             _mapper.Map(request.Education, data);
 
