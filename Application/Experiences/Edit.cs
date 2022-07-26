@@ -22,22 +22,16 @@ public class Edit
 
         public async Task<Result<Unit>> Handle(Commnad request, CancellationToken cancellationToken)
         {
+            var experience = await _context.Experiences
+                                            .Where(e => e.Id == request.Experience.Id)
+                                            .Include(e => e.Logo).FirstOrDefaultAsync();
 
-            if (request.Experience.PhotoFile == null)
+            if (experience == null) return null;
+            if (request.Experience.PhotoFile != null)
             {
-                var experience = await _context.Experiences.FindAsync(request.Experience.Id);
-                if (experience == null) return null;
-                _mapper.Map(request.Experience, experience);
-                request.Experience.Logo = experience.Logo;
-
-            }
-            else
-            {
-                var experience = await _context.Experiences.Include(p => p.Logo).Where(exp => exp.Id == request.Experience.Id).FirstOrDefaultAsync<Experience>();
-                if (experience == null) return null;
                 var removePhoto = await _photoAccessor.DeletePhoto(experience.Logo.Id);
                 if (removePhoto == null) return Result<Unit>.Failure("Failed to delete photo");
-                _context.Remove(experience.Logo);
+                _context.Photos.Remove(experience.Logo);
 
                 var photoResult = await _photoAccessor.AddPhoto(request.Experience.PhotoFile);
                 if (photoResult == null) return Result<Unit>.Failure("Failed to upload photo");
@@ -48,11 +42,13 @@ public class Edit
                     IsMain = true
                 };
                 request.Experience.Logo = photo;
-                _mapper.Map(request.Experience, experience);
-
+            }
+            else
+            {
+                request.Experience.Logo = experience.Logo;
             }
 
-
+            _mapper.Map(request.Experience, experience);
             var result = await _context.SaveChangesAsync() > 0;
             if (!result) return Result<Unit>.Failure("Failed to Edit Data");
 
