@@ -14,7 +14,7 @@ namespace API.Extensions
     {
         public static IServiceCollection AddIdentityServices(this IServiceCollection services, IConfiguration config)
         {
-            services.AddIdentityCore<AppAdmin>(opt =>
+            services.AddIdentity<AppAdmin, IdentityRole>(opt =>
             {
                 opt.Password.RequireNonAlphanumeric = false;
             })

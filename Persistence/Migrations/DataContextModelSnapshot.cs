@@ -117,7 +117,7 @@ namespace Persistence.Migrations
 
                     b.HasIndex("LogoId");
 
-                    b.ToTable("Certificates");
+                    b.ToTable("Certificates", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Education", b =>
@@ -154,7 +154,7 @@ namespace Persistence.Migrations
 
                     b.HasIndex("LogoId");
 
-                    b.ToTable("Schools");
+                    b.ToTable("Schools", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Experience", b =>
@@ -185,7 +185,7 @@ namespace Persistence.Migrations
 
                     b.HasIndex("LogoId");
 
-                    b.ToTable("Experiences");
+                    b.ToTable("Experiences", (string)null);
                 });
 
             modelBuilder.Entity("Domain.MyProfile", b =>
@@ -210,7 +210,7 @@ namespace Persistence.Migrations
 
                     b.HasIndex("PhotoId");
 
-                    b.ToTable("Profiles");
+                    b.ToTable("Profiles", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Photo", b =>
@@ -231,7 +231,7 @@ namespace Persistence.Migrations
 
                     b.HasIndex("ProjectId");
 
-                    b.ToTable("Photos");
+                    b.ToTable("Photos", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Project", b =>
@@ -257,7 +257,7 @@ namespace Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Projects");
+                    b.ToTable("Projects", (string)null);
                 });
 
             modelBuilder.Entity("Domain.ProjectSkill", b =>
@@ -272,7 +272,7 @@ namespace Persistence.Migrations
 
                     b.HasIndex("ProjectId");
 
-                    b.ToTable("ProjectSKills");
+                    b.ToTable("ProjectSKills", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Skill", b =>
@@ -294,7 +294,7 @@ namespace Persistence.Migrations
 
                     b.HasIndex("PhotoId");
 
-                    b.ToTable("Skills");
+                    b.ToTable("Skills", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

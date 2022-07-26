@@ -20,7 +20,9 @@ public class List
         public async Task<Result<List<CertificateDto>>> Handle(Query request, CancellationToken cancellationToken)
         {
 
-            var certificates = await _context.Certificates.ProjectTo<CertificateDto>(_mapper.ConfigurationProvider).ToListAsync(cancellationToken);
+            var certificates = await _context.Certificates.ProjectTo<CertificateDto>(_mapper.ConfigurationProvider)
+                                                           .OrderBy(c => c.Priority)
+                                                           .ToListAsync(cancellationToken);
 
             return Result<List<CertificateDto>>.Success(certificates);
         }

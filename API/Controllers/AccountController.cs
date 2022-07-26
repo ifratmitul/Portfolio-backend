@@ -4,7 +4,6 @@ using API.Services;
 
 namespace API.Controllers
 {
-    [AllowAnonymous]
     [ApiController]
     [Route("api/[controller]")]
     public class AccountController : ControllerBase
@@ -20,13 +19,14 @@ namespace API.Controllers
 
         }
 
+        [AllowAnonymous]
         [HttpPost("login")]
         public async Task<ActionResult<AdminDto>> Login(LoginDto logindto)
         {
             var user = await _userManager.FindByEmailAsync(logindto.Email);
             if (user == null) return Unauthorized();
 
-            var result = await _signInManager.CheckPasswordSignInAsync(user, logindto.Password, false);
+            var result = await _signInManager.PasswordSignInAsync(user, logindto.Password, logindto.Remember , false);
 
             if (result.Succeeded)
             {
@@ -43,6 +43,21 @@ namespace API.Controllers
         {
             var user = await _userManager.FindByEmailAsync(User.FindFirstValue(ClaimTypes.Email));
             return CreateAdminObject(user);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> CreateUser(EmployeeRegistrationModel employee) {
+            
+            var user = new AppAdmin {UserName = employee.Email, Email = employee.Email, Designation = employee.Designation  };
+            var result = await _userManager.CreateAsync(user, employee.Password);
+
+            if(result.Succeeded)
+            {
+                return Ok("Successfully Added Employee account");
+            }
+
+            return BadRequest(result.Errors);
         }
 
         private AdminDto CreateAdminObject(AppAdmin admin)

@@ -18,8 +18,10 @@ public class List
 
         public async Task<Result<List<EducationDto>>> Handle(Query request, CancellationToken cancellationToken)
         {
-            var school = await _context.Schools.ProjectTo<EducationDto>(_mapper.ConfigurationProvider).ToListAsync(cancellationToken);
-            if (school.Count > 1) school.Sort((s1, s2) => s1.Priority.CompareTo(s2.Priority));
+            var school = await _context.Schools.ProjectTo<EducationDto>(_mapper.ConfigurationProvider)
+                                                                       .OrderBy( s => s.Priority)
+                                                                       .ToListAsync(cancellationToken);
+           
             return Result<List<EducationDto>>.Success(school);
         }
     }

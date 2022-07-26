@@ -31,8 +31,9 @@ namespace Application.Skills
             public async Task<Result<List<SkillDto>>> Handle(Query request, CancellationToken cancellationToken)
             {
                 var skills = await _context.Skills.ProjectTo<SkillDto>(_mapper.ConfigurationProvider)
-                .ToListAsync(cancellationToken);
-                if (skills.Count > 1) skills.Sort((s1, s2) => s1.Rating.CompareTo(s2.Rating));
+                                                  .OrderBy(s => s.Rating) 
+                                                  .ToListAsync(cancellationToken);
+
                 return Result<List<SkillDto>>.Success(skills);
             }
 

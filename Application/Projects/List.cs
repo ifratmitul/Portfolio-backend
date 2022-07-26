@@ -19,8 +19,10 @@ public class List
 
         public async Task<Result<List<ProjectDto>>> Handle(Query request, CancellationToken cancellationToken)
         {
-            var projects = await _context.Projects.ProjectTo<ProjectDto>(_mapper.ConfigurationProvider).AsSingleQuery().ToListAsync(cancellationToken);
-            if (projects.Count > 1) projects.Sort((p1, p2) => p1.Rating.CompareTo(p2.Rating));
+            var projects = await _context.Projects.ProjectTo<ProjectDto>(_mapper.ConfigurationProvider)
+                                                  .OrderBy(p => p.Rating)
+                                                  .AsSingleQuery()
+                                                  .ToListAsync(cancellationToken);
 
             return Result<List<ProjectDto>>.Success(projects);
         }

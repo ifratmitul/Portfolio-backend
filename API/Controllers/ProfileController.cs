@@ -4,6 +4,7 @@ namespace API.Controllers
 {
     public class ProfileController : BaseApiController
     {
+        [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> GetProfileDetails()
         {
