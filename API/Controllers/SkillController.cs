@@ -3,7 +3,7 @@ namespace API.Controllers
 {
     public class SkillController : BaseApiController
     {
-
+        //[AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> GetSkills()
         {

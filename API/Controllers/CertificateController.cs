@@ -5,6 +5,7 @@ namespace API.Controllers
 {
     public class CertificateController : BaseApiController
     {
+        [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> GetCertificate()
         {

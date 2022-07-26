@@ -4,6 +4,7 @@ namespace API.Controllers
 {
     public class ExperienceController : BaseApiController
     {
+        [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> GetAllExperience()
         {

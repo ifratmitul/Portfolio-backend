@@ -3,6 +3,7 @@ namespace API.Controllers
 {
     public class ProjectController : BaseApiController
     {
+        [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> GetProjects()
         {
@@ -27,7 +28,7 @@ namespace API.Controllers
         {
             return HandleResult(await Mediator.Send(new Delete.Command { Id = id }));
         }
-
+        [AllowAnonymous]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetProjectDetails(Guid id)
         {

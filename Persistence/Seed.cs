@@ -18,7 +18,6 @@ namespace Persistence
                         Name = "Bob",
                         UserName = "bob",
                         Email = "bob@test.com",
-                        AccessType="admin"
                     }
                 };
 
@@ -28,9 +27,7 @@ namespace Persistence
                 }
             }
 
-
             await context.SaveChangesAsync();
-
 
         }
     }

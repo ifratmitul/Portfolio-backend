@@ -14,7 +14,7 @@ namespace API.Extensions
     {
         public static IServiceCollection AddIdentityServices(this IServiceCollection services, IConfiguration config)
         {
-            services.AddIdentityCore<AppAdmin>(opt =>
+            services.AddIdentity<AppAdmin, IdentityRole>(opt =>
             {
                 opt.Password.RequireNonAlphanumeric = false;
             })
@@ -35,6 +35,25 @@ namespace API.Extensions
                 };
 
             });
+
+            //services.AddAuthorization(options =>
+            //{
+            //    options.AddPolicy("AdminPolicy", (policy) =>
+            //    {
+            //        policy.RequireRole("SuperAdmin");
+            //    });
+
+            //    options.AddPolicy("AdminManagerPolicy", (policy) =>
+            //    {
+            //        policy.RequireRole("Admin");
+            //    });
+
+            //    options.AddPolicy("AdminManagerClerkPolicy", (policy) =>
+            //    {
+            //        policy.RequireRole("Editor", "Manager", "Moderator");
+            //    });
+            //});
+
             services.AddScoped<TokenService>();
             return services;
         }
