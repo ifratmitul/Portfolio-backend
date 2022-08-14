@@ -40,8 +40,11 @@ try
 {
     var context = services.GetRequiredService<DataContext>();
     var userManager = services.GetRequiredService<UserManager<AppAdmin>>();
+    var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
     await context.Database.MigrateAsync();
     await Seed.SeedData(context, userManager);
+    await Seed.SeedRolesAsync(userManager, roleManager);
+    await Seed.SeedSuperAdminAsync(userManager, roleManager);
 }
 catch (Exception ex)
 {

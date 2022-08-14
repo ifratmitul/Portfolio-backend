@@ -20,7 +20,7 @@
 
             public async Task<Result<Unit>> Handle(Command request, CancellationToken cancellationToken)
             {
-                if (request.PhotoId == null || request.ProjectId == null || request.ProjectId == Guid.Empty)
+                if (request.ProjectId == Guid.Empty)
                     return Result<Unit>.Failure("Project Id or Photo Id not found, Must include both Project and PhotoID");
 
                 Project project = await _context.Projects

@@ -1,10 +1,7 @@
-using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using System.Security.Cryptography;
 using System.Text;
-using Domain;
-using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 
 namespace API.Services
@@ -17,7 +14,7 @@ namespace API.Services
             _config = config;
         }
 
-        public string CreateToken(AppAdmin user)
+        public string CreateToken(AppAdmin user, IList<string> roles)
         {
             var claims = new List<Claim>
             {
@@ -26,13 +23,18 @@ namespace API.Services
                 new Claim(ClaimTypes.Email, user.Email),
             };
 
+            foreach (string role in roles)
+            {
+                claims.Add(new Claim(ClaimTypes.Role, role));
+            }
+
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["TokenKey"]));
             var cred = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
 
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(claims),
-                Expires = DateTime.Now.AddDays(7),
+                Expires = DateTime.UtcNow.AddMinutes(10),
                 SigningCredentials = cred
             };
 
@@ -40,6 +42,14 @@ namespace API.Services
             var token = tokenHandler.CreateToken(tokenDescriptor);
             return tokenHandler.WriteToken(token);
 
+        }
+
+        public RefreshToken GenerateRefreshToken ()
+        {
+            var randomNumber = new byte[32];
+            using var rng = RandomNumberGenerator.Create();
+            rng.GetBytes(randomNumber);
+            return new RefreshToken { Token = Convert.ToBase64String(randomNumber) };
         }
 
     }

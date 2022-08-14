@@ -4,7 +4,7 @@ namespace API.Controllers
 {
     public class EducationController : BaseApiController
     {
-
+        [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> GetDegrees()
         {
