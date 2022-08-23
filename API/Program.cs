@@ -11,6 +11,16 @@ builder.Services.AddControllers(opt =>
     config.RegisterValidatorsFromAssemblyContaining<Create>();
 });
 
+builder.Host.UseSerilog((ctx, lc) =>
+                          lc.MinimumLevel.Debug()
+                          .MinimumLevel.Override("Microsoft", Serilog.Events.LogEventLevel.Warning)
+                          .Enrich.FromLogContext()
+                          .ReadFrom.Configuration(builder.Configuration));
+
+try
+{
+
+
 builder.Services.AddApplicationServices(builder.Configuration);
 builder.Services.AddIdentityServices(builder.Configuration);
 
@@ -50,3 +60,13 @@ catch (Exception ex)
 }
 
 await app.RunAsync();
+
+}
+catch (Exception ex)
+{
+    Log.Fatal(ex, "Application failed to start");
+}
+finally
+{
+    Log.CloseAndFlush();
+}
